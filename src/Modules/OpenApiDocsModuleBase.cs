@@ -2,6 +2,7 @@
 using Nancy.Metadata.OpenApi.Model;
 using Nancy.Routing;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -149,9 +150,16 @@ namespace Nancy.Metadata.OpenApi.Modules
                 GenerateSpecification();
             }
 
+            var serializerSettings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                Formatting = Formatting.Indented,
+            };
+
+            var json = JsonConvert.SerializeObject(openApiSpecification, Formatting.None, serializerSettings);
+            json = json.Replace("#/definitions/", "#/components/schemas/");
             return Response
-                    .AsText(JsonConvert.SerializeObject(openApiSpecification,
-                    Formatting.None, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }))
+                    .AsText(json)
                     .WithContentType(CONTENT_TYPE);
         }
 
@@ -203,25 +211,25 @@ namespace Nancy.Metadata.OpenApi.Modules
                 if (openApiSpecification.Component == null)
                 {
                     openApiSpecification.Component = new Component();
+                }
 
-                    if (openApiSpecification.Component.ModelDefinitions == null)
-                    {
-                        openApiSpecification.Component.ModelDefinitions = new Dictionary<string, NJsonSchema.JsonSchema4>();
-                    }
+                if (openApiSpecification.Component.ModelDefinitions == null)
+                {
+                    openApiSpecification.Component.ModelDefinitions = new Dictionary<string, JObject>();
                 }
 
                 foreach (string key in SchemaCache.Cache.Keys)
                 {
-                    if (openApiSpecification.Component.ModelDefinitions.ContainsKey(key))
+                    if (!openApiSpecification.Component.ModelDefinitions.ContainsKey(key))
                     {
-                        continue;
+                        var model = SchemaCache.Cache[key];
+                        openApiSpecification.Component.ModelDefinitions.Add(key, model);
                     }
-
-                    openApiSpecification.Component.ModelDefinitions.Add(key, SchemaCache.Cache[key]);
                 }
             }
 
             openApiSpecification.PathInfos = endpoints;
+
         }
     }
 }

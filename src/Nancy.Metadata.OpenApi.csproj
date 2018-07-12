@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.6;net45</TargetFrameworks>
-    <Version>0.5.1</Version>
+    <Version>0.5.1-patch1</Version>
     <PackageVersion>0.5.1</PackageVersion>
     <PackageId>Nancy.Metadata.OpenApi</PackageId>
     <Copyright>Copyright 2017</Copyright>

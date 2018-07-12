@@ -1,6 +1,5 @@
 ﻿using Nancy.Metadata.OpenApi.Core;
 using Nancy.Metadata.OpenApi.Model;
-using NJsonSchema;
 using System;
 using System.Collections.Generic;
 
@@ -86,11 +85,11 @@ namespace Nancy.Metadata.OpenApi.Fluent
 
             endpointInfo.RequestParameters.Add(new RequestParameter
             {
-                Required = required,
+                Required = required ? new Nullable<bool>(true) : null,
                 Description = description,
                 In = loc,
                 Name = name,
-                Deprecated = deprecated,
+                Deprecated = deprecated ? new Nullable<bool>(true) : null,
                 Schema = schema
             });
 
@@ -204,7 +203,7 @@ namespace Nancy.Metadata.OpenApi.Fluent
                 {
                     Schema = new SchemaRef
                     {
-                        Ref = $"#/components/schemas/{GetOrSaveSchemaReference(responseType)}"
+                        Ref = $"#/components/schemas/{GetOrSaveSchemaReference(responseType)}"                        
                     },
                     Description = description
                 };
@@ -222,25 +221,9 @@ namespace Nancy.Metadata.OpenApi.Fluent
         /// <returns></returns>
         private static string GetOrSaveSchemaReference(Type type)
         {
-            string key = type.FullName;
-
-            if (SchemaCache.Cache.ContainsKey(key))
-            {
-                return key;
-            }
-
-            var taskSchema = JsonSchema4.FromTypeAsync(type, new NJsonSchema.Generation.JsonSchemaGeneratorSettings
-            {
-                SchemaType = SchemaType.OpenApi3,
-                TypeNameGenerator = new TypeNameGenerator(),
-                SchemaNameGenerator = new TypeNameGenerator()
-            });
-
-            SchemaCache.Cache[key] = taskSchema.Result;
-
-            return key;
+            return SchemaCache.AddSchema(type);
         }
-
+       
         /// <summary>
         /// Matches the type, format and item (if array) to the schema specified on the parameter.
         /// </summary>
@@ -259,7 +242,8 @@ namespace Nancy.Metadata.OpenApi.Fluent
                     format = null;
                     break;
 
-                case var t when t.Contains("int"): //int, integer
+                case "int":
+                case "integer":
                     type = "integer";
                     format = "int32";
                     break;
@@ -289,7 +273,8 @@ namespace Nancy.Metadata.OpenApi.Fluent
                     format = "binary";
                     break;
 
-                case var t when t.Contains("bool"): //bool, boolean
+                case "bool":
+                case "boolean":
                     type = "boolean";
                     format = null;
                     break;
@@ -312,11 +297,19 @@ namespace Nancy.Metadata.OpenApi.Fluent
 
             if (isArray)
             {
-                schema = new SchemaRef() { Item = new Item() { Type = type, Format = format }, Type = "array" };
+                schema = new SchemaRef
+                {
+                    Item = new Item { Type = type, Format = format },
+                    Type = "array"
+                };
             }
             else
             {
-                schema = new SchemaRef() { Type = type, Format = format };
+                schema = new SchemaRef
+                {
+                    Type = type,
+                    Format = format
+                };
             }
 
             return schema;

@@ -16,7 +16,7 @@ namespace Nancy.Metadata.OpenApi.Tests.UnitTests
         {
             //Arrange
             var module = new FakeModule(new DefaultRouteCacheProvider(() => new FakeRouteCache()));
-
+            
             //Act
             var response = module.GetDocumentation();
             string body;
