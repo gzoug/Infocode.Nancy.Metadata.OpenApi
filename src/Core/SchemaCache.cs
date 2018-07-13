@@ -15,6 +15,9 @@ namespace Nancy.Metadata.OpenApi.Core
         private static IList<Type> cachedTypeNames = new List<Type>();
 
         private static JsonSchemaGeneratorSettings _settings;
+        private static JsonSchemaResolver _resolver;
+        private static JsonSchema4 _schema;
+        private static JsonSchemaGenerator _generator;
 
         static SchemaCache()
         {
@@ -26,18 +29,31 @@ namespace Nancy.Metadata.OpenApi.Core
                 TypeNameGenerator = new TypeNameGenerator(),
                 SchemaNameGenerator = new TypeNameGenerator(),
                 AllowReferencesWithProperties = true,
-                IgnoreObsoleteProperties = false,
+                IgnoreObsoleteProperties = false,          
+                
             };
         }
 
         private static JsonSchemaGenerator GetSchemaGenerator()
         {
-            return new JsonSchemaGenerator(_settings);
+            if (_schema == null)
+            {
+                _schema = new JsonSchema4();
+            }
+            if (_resolver == null)
+            {
+                _resolver = new JsonSchemaResolver(_schema, _settings);
+            }
+            if (_generator == null)
+            {
+                _generator = new JsonSchemaGenerator(_settings);
+            }
+            return _generator;
         }
 
         private static void AddToCache(string key, JObject value)
         {
-            if (!Cache.ContainsKey(key))
+            if (key != null && !Cache.ContainsKey(key))
             {
                 ClearSchemaNodes(value);
                 Cache.Add(key, value);
@@ -50,10 +66,7 @@ namespace Nancy.Metadata.OpenApi.Core
             {
                 return;
             }
-
-            jo.Remove("definitions");
             jo.Remove("$schema");
-
             foreach (var o in jo.Properties().Where(x => x.Type == JTokenType.Object))
             {
                 ClearSchemaNodes((JObject)(o.Value));
@@ -66,32 +79,29 @@ namespace Nancy.Metadata.OpenApi.Core
 
             if (!Cache.ContainsKey(typeName))
             {
+                var firstRun = (_schema == null);
                 var generator = GetSchemaGenerator();
-                var schema = generator.GenerateAsync(type).Result;
-                AddToCache(typeName, JObject.Parse(schema.ToJson()));
-                CacheSchemaDefinitions(schema);
+
+                if (firstRun)
+                {
+                    generator.GenerateAsync(type, null, _schema, _resolver).Wait(); // generator.GenerateAsync(type).Result;
+                }
+                else
+                {
+                    var x = generator.GenerateAsync(type, _resolver).Result; // generator.GenerateAsync(type).Result;
+                }
+
+                var typeSchema = _schema;
+                if (typeSchema != null)
+                {
+                    AddToCache(typeName, JObject.Parse(typeSchema.ToJson()));
+                }
+
+                _schema = null;
+                _generator = null;
+                _resolver = null;
             }
             return typeName;
-        }
-
-        private static void CacheSchemaDefinitions(JsonSchema4 schema)
-        {
-            foreach (var d in schema.Definitions)
-            {
-                CacheSchemaDefinitions(d.Value); 
-                if (!Cache.ContainsKey(d.Key))
-                {
-                    try
-                    {                        
-                        AddToCache(d.Key, JObject.Parse(d.Value.ToJson()));
-                    }
-                    catch (Exception exc)
-                    {
-                        // skip model if could not convert to jobject
-                        AddToCache(d.Key, JObject.Parse("{}")); // JObject.Parse("{\"exception\":\"" + exc.ToString() + Environment.NewLine + exc.StackTrace + "\"}"));
-                    }
-                }
-            }
         }
     }
 }

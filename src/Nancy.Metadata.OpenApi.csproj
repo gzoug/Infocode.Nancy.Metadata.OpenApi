@@ -42,4 +42,8 @@
     <DefineConstants>NET45</DefineConstants>
   </PropertyGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;M:\Projects\Personal\Nancy.Metadata.OpenApi\src\bin\Debug\net45\Nancy.Metadata.OpenApi.dll&quot; &quot;M:\Projects\Development\Exelysis.ContactCenter.TaskImporter\v2.0\Prebuilt Libraries&quot;" />
+  </Target>
+
 </Project>

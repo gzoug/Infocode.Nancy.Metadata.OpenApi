@@ -3,7 +3,9 @@ using Nancy.Metadata.OpenApi.Model;
 using Nancy.Routing;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Nancy.Metadata.OpenApi.Modules
@@ -224,12 +226,37 @@ namespace Nancy.Metadata.OpenApi.Modules
                     {
                         var model = SchemaCache.Cache[key];
                         openApiSpecification.Component.ModelDefinitions.Add(key, model);
+                        AddSchemaDefinitionsToModels(openApiSpecification, model);
                     }
                 }
             }
 
             openApiSpecification.PathInfos = endpoints;
+        }
 
+        private void AddSchemaDefinitionsToModels(OpenApiSpecification spec, JObject model)
+        {
+            var definitionsNode = model["definitions"];
+            if (definitionsNode != null)
+            {
+                foreach(var p in definitionsNode.Children().Where(x => x.Type == JTokenType.Property && x.HasValues).Cast<JProperty>().ToArray())
+                {
+                    if (p == null)
+                    {
+                        continue;
+                    }
+                    
+                    if (p.Name != null && !spec.Component.ModelDefinitions.ContainsKey(p.Name))
+                    {
+                        var jo = p.Value.ToObject<JObject>();
+                        jo.AddFirst(new JProperty("title", p.Name));
+                        spec.Component.ModelDefinitions.Add(p.Name, jo);
+                        AddSchemaDefinitionsToModels(spec, jo);
+                    }
+                }
+                model.Remove("definitions");
+            }
+            
         }
     }
 }
