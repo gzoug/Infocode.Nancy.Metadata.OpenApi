@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Nancy.Metadata.OpenApi.DemoApplication.Model
+namespace Infocode.Nancy.Metadata.OpenApi.DemoApplication.Model
 {
     public class SimpleResponseModel
     {

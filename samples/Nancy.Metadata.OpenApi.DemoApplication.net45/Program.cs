@@ -1,7 +1,7 @@
 ﻿using Nancy.Hosting.Self;
 using System;
 
-namespace Nancy.Metadata.OpenApi.DemoApplication.net45
+namespace Infocode.Nancy.Metadata.OpenApi.DemoApplication.net45
 {
     public class Program
     {

@@ -1,7 +1,7 @@
-﻿using Nancy.Validation;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Nancy.Validation;
 
-namespace Nancy.Metadata.OpenApi.DemoApplication.Model
+namespace Infocode.Nancy.Metadata.OpenApi.DemoApplication.Model
 {
     public class ValidationFailedResponseModel
     {

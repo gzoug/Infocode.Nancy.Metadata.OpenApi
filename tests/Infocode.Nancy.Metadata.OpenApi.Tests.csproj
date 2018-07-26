@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Nancy.Metadata.OpenApi.csproj" />
+    <ProjectReference Include="..\src\Infocode.Nancy.Metadata.OpenApi.csproj" />
   </ItemGroup>
 
 </Project>

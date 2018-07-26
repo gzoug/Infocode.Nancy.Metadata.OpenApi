@@ -1,17 +1,21 @@
-﻿using Nancy.Metadata.OpenApi.Core;
-using Nancy.Metadata.OpenApi.Model;
-using Nancy.Routing;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Infocode.Nancy.Metadata.OpenApi.Core;
+using Infocode.Nancy.Metadata.OpenApi.Model;
+using Nancy;
+using Nancy.Routing;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Response = Nancy.Response;
 
-namespace Nancy.Metadata.OpenApi.Modules
+namespace Infocode.Nancy.Metadata.OpenApi.Modules
 {
     public abstract class OpenApiDocsModuleBase : NancyModule
     {
+        private static Dictionary<Type, string> cachedSpecifications = new Dictionary<Type, string>();
+
         private const string CONTENT_TYPE = "application/json";
         private const string DOCS_LOCATION = "/api/docs";
         private const string API_VERSION = "1.0";
@@ -61,7 +65,7 @@ namespace Nancy.Metadata.OpenApi.Modules
                     termsOfService,
                     new Server[] { host },
                     apiBaseUrl,
-                    tags)
+                    tags) 
         {
         }
 
@@ -86,7 +90,7 @@ namespace Nancy.Metadata.OpenApi.Modules
             string termsOfService = null,
             Server[] hosts = null,
             string apiBaseUrl = API_BASE_URL,
-            Tag[] tags = null)
+            Tag[] tags = null) 
         {
             this.routeCacheProvider = routeCacheProvider;
             this.title = title;
@@ -147,21 +151,27 @@ namespace Nancy.Metadata.OpenApi.Modules
         /// <returns></returns>
         public virtual Response GetDocumentation()
         {
-            if (openApiSpecification == null)
+            var moduleType = this.GetType();
+            string specification = null;
+            
+            if (!cachedSpecifications.TryGetValue(moduleType, out specification))
             {
                 GenerateSpecification();
+                var serializerSettings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    Formatting = Formatting.Indented,
+                };
+
+                specification = JsonConvert.SerializeObject(openApiSpecification, Formatting.None, serializerSettings);
+                specification = specification.Replace("#/definitions/", "#/components/schemas/");
+
+                cachedSpecifications[moduleType] = specification;
             }
 
-            var serializerSettings = new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                Formatting = Formatting.Indented,
-            };
 
-            var json = JsonConvert.SerializeObject(openApiSpecification, Formatting.None, serializerSettings);
-            json = json.Replace("#/definitions/", "#/components/schemas/");
             return Response
-                    .AsText(json)
+                    .AsText(specification)
                     .WithContentType(CONTENT_TYPE);
         }
 
@@ -224,7 +234,7 @@ namespace Nancy.Metadata.OpenApi.Modules
                 {
                     if (!openApiSpecification.Component.ModelDefinitions.ContainsKey(key))
                     {
-                        var model = SchemaCache.Cache[key];
+                        var model = SchemaCache.Cache[key].DeepClone() as JObject;
                         openApiSpecification.Component.ModelDefinitions.Add(key, model);
                         AddSchemaDefinitionsToModels(openApiSpecification, model);
                     }

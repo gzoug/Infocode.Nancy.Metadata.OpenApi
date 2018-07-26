@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using System.IO;
+﻿using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
-namespace Nancy.Metadata.OpenApi.DemoApplication
+namespace Infocode.Nancy.Metadata.OpenApi.DemoApplication
 {
     public class Program
     {

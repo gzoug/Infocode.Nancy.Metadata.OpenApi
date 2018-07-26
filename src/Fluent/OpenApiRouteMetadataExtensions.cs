@@ -1,8 +1,8 @@
-﻿using Nancy.Metadata.OpenApi.Core;
-using Nancy.Metadata.OpenApi.Model;
-using System;
+﻿using System;
+using Infocode.Nancy.Metadata.OpenApi.Core;
+using Infocode.Nancy.Metadata.OpenApi.Model;
 
-namespace Nancy.Metadata.OpenApi.Fluent
+namespace Infocode.Nancy.Metadata.OpenApi.Fluent
 {
     public static class OpenApiRouteMetadataExtensions
     {

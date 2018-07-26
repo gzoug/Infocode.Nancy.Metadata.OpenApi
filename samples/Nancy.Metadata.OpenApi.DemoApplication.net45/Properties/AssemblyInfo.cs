@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Nancy.Metadata.OpenApi.DemoApplication.net45")]
+[assembly: AssemblyTitle("Infocode.Nancy.Metadata.OpenApi.DemoApplication.net45")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Nancy.Metadata.OpenApi.DemoApplication.net45")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyProduct("Infocode.Nancy.Metadata.OpenApi.DemoApplication.net45")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("caa8e2f2-a025-4bef-856e-7678a7ec4b16")]
+[assembly: Guid("7e01afc6-7ab4-4764-b781-a18b4786b2a5")]
 
 // Version information for an assembly consists of the following four values:
 //

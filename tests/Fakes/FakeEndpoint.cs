@@ -1,4 +1,4 @@
-﻿namespace Nancy.Metadata.OpenApi.Tests.Fakes
+﻿namespace Infocode.Nancy.Metadata.OpenApi.Tests.Fakes
 {
     public class FakeEndpoint
     {

@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Nancy.Metadata.OpenApi.Model
+namespace Infocode.Nancy.Metadata.OpenApi.Model
 {
     public class License
     {

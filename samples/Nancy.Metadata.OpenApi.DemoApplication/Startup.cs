@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Nancy.Owin;
 
-namespace Nancy.Metadata.OpenApi.DemoApplication
+namespace Infocode.Nancy.Metadata.OpenApi.DemoApplication
 {
     public class Startup
     {

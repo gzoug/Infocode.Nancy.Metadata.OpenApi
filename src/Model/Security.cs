@@ -1,4 +1,5 @@
-﻿namespace Nancy.Metadata.OpenApi.Model
+﻿
+namespace Infocode.Nancy.Metadata.OpenApi.Model
 {
     public class Security
     {

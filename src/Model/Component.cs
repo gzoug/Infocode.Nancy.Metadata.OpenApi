@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
 
-namespace Nancy.Metadata.OpenApi.Model
+namespace Infocode.Nancy.Metadata.OpenApi.Model
 {
     public class Component
     {

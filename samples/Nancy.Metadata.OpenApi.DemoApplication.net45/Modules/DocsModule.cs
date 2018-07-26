@@ -1,8 +1,9 @@
-﻿using Nancy.Metadata.OpenApi.Model;
-using Nancy.Metadata.OpenApi.Modules;
+﻿using Infocode.Nancy.Metadata.OpenApi.Model;
+using Infocode.Nancy.Metadata.OpenApi.Modules;
+using Nancy;
 using Nancy.Routing;
 
-namespace Nancy.Metadata.OpenApi.DemoApplication.net45.Modules
+namespace Infocode.Nancy.Metadata.OpenApi.DemoApplication.net45.Modules
 {
     public class DocsModule : OpenApiDocsModuleBase
     {

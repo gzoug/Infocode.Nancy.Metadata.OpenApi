@@ -7,8 +7,8 @@
     <ProjectGuid>{A537003B-2A76-4A0D-8F08-7D66EC17E2F8}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nancy.Metadata.OpenApi.DemoApplication.net45</RootNamespace>
-    <AssemblyName>Nancy.Metadata.OpenApi.DemoApplication.net45</AssemblyName>
+    <RootNamespace>Infocode.Nancy.Metadata.OpenApi.DemoApplication.net45</RootNamespace>
+    <AssemblyName>Infocode.Nancy.Metadata.OpenApi.DemoApplication.net45</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -94,9 +94,9 @@
     <Content Include="Content\swagger-ui.js" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Nancy.Metadata.OpenApi.csproj">
+    <ProjectReference Include="..\..\src\Infocode.Nancy.Metadata.OpenApi.csproj">
       <Project>{5d00a219-9f98-498e-8a3f-f06449e3e864}</Project>
-      <Name>Nancy.Metadata.OpenApi</Name>
+      <Name>Infocode.Nancy.Metadata.OpenApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

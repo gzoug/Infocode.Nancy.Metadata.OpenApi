@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <UserSecretsId>6d06491f-f329-457d-9af3-15643d25f5d2</UserSecretsId>
   </PropertyGroup>
 
 
@@ -34,7 +35,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Nancy.Metadata.OpenApi.csproj" />
+    <ProjectReference Include="..\..\src\Infocode.Nancy.Metadata.OpenApi.csproj" />
   </ItemGroup>
 
 </Project>

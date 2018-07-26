@@ -1,9 +1,9 @@
-﻿using Nancy.Metadata.OpenApi.Fluent;
-using Nancy.Metadata.OpenApi.Model;
-using Nancy.Metadata.OpenApi.Tests.Fakes;
+﻿using Infocode.Nancy.Metadata.OpenApi.Fluent;
+using Infocode.Nancy.Metadata.OpenApi.Model;
+using Infocode.Nancy.Metadata.OpenApi.Tests.Fakes;
 using Xunit;
 
-namespace Nancy.Metadata.OpenApi.Tests.UnitTests
+namespace Infocode.Nancy.Metadata.OpenApi.Tests.UnitTests
 {
     public class RequestParameterTests
     {

@@ -1,13 +1,13 @@
-﻿using Nancy.Metadata.OpenApi.Model;
-using Nancy.Metadata.OpenApi.Tests.Fakes;
+﻿using System.IO;
+using System.Linq;
+using System.Text;
+using Infocode.Nancy.Metadata.OpenApi.Model;
+using Infocode.Nancy.Metadata.OpenApi.Tests.Fakes;
 using Nancy.Routing;
 using Newtonsoft.Json;
-using System.IO;
-using System.Text;
 using Xunit;
-using System.Linq;
 
-namespace Nancy.Metadata.OpenApi.Tests.UnitTests
+namespace Infocode.Nancy.Metadata.OpenApi.Tests.UnitTests
 {
     public class ModuleTests
     {

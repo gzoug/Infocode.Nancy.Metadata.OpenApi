@@ -1,11 +1,12 @@
 ﻿using Nancy.Metadata.Modules;
-using Nancy.Metadata.OpenApi.Core;
-using Nancy.Metadata.OpenApi.DemoApplication.net45.Model;
-using Nancy.Metadata.OpenApi.Fluent;
+using Infocode.Nancy.Metadata.OpenApi.DemoApplication.net45.Model;
 using Nancy.ModelBinding;
 using System.Linq;
+using Infocode.Nancy.Metadata.OpenApi.Core;
+using Infocode.Nancy.Metadata.OpenApi.Fluent;
+using Nancy;
 
-namespace Nancy.Metadata.OpenApi.DemoApplication.net45.Modules
+namespace Infocode.Nancy.Metadata.OpenApi.DemoApplication.net45.Modules
 {
     public class RootModule : NancyModule
     {

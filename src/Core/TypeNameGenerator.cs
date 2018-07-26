@@ -1,8 +1,8 @@
-﻿using NJsonSchema;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using NJsonSchema;
 
-namespace Nancy.Metadata.OpenApi.Core
+namespace Infocode.Nancy.Metadata.OpenApi.Core
 {
     public class TypeNameGenerator : ITypeNameGenerator, ISchemaNameGenerator
     {

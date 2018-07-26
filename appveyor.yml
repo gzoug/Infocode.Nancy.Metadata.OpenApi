@@ -11,10 +11,10 @@ configuration:
 before_build:
   - cmd: dotnet --version
 build_script:
-  - cmd: dotnet build ./src/Nancy.Metadata.OpenApi.csproj -v quiet
-  - cmd: dotnet publish ./src/Nancy.Metadata.OpenApi.csproj -v quiet -f=netstandard1.6
+  - cmd: dotnet build ./src/Infocode.Nancy.Metadata.OpenApi.csproj -v quiet
+  - cmd: dotnet publish ./src/Infocode.Nancy.Metadata.OpenApi.csproj -v quiet -f=netstandard1.6
 test_script:
-  - cmd: dotnet test ./tests/Nancy.Metadata.OpenApi.Tests.csproj 
+  - cmd: dotnet test ./tests/Infocode.Nancy.Metadata.OpenApi.Tests.csproj 
 artifacts:
   - path: '**/*.nupkg'
 skip_commits:
@@ -26,5 +26,5 @@ deploy:
   on:
     branch: master  
   api_key:
-    secure: 6xhHSsDvB9arsrSDLuynnbxaVS+BwaoJU96RfQenc5FOnUYvP8SHM6kbvrmpvja2
+#    secure: 
   skip_symbols: true

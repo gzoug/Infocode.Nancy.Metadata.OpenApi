@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Nancy.Metadata.OpenApi.DemoApplication.Model
+﻿namespace Infocode.Nancy.Metadata.OpenApi.DemoApplication.Model
 {
     public class NestedRequestModel
     {

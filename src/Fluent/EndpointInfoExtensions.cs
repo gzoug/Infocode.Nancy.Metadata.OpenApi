@@ -1,9 +1,9 @@
-﻿using Nancy.Metadata.OpenApi.Core;
-using Nancy.Metadata.OpenApi.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Infocode.Nancy.Metadata.OpenApi.Core;
+using Infocode.Nancy.Metadata.OpenApi.Model;
 
-namespace Nancy.Metadata.OpenApi.Fluent
+namespace Infocode.Nancy.Metadata.OpenApi.Fluent
 {
     /// <summary>
     /// Endpoint Info Extensions for use with the nancy modules.
@@ -22,7 +22,7 @@ namespace Nancy.Metadata.OpenApi.Fluent
         {
             if (endpointInfo.ResponseInfos == null)
             {
-                endpointInfo.ResponseInfos = new Dictionary<string, Model.Response>();
+                endpointInfo.ResponseInfos = new Dictionary<string, global::Infocode.Nancy.Metadata.OpenApi.Model.Response>();
             }
 
             endpointInfo.ResponseInfos[statusCode] = GenerateResponseInfo(description, modelType);
@@ -51,7 +51,7 @@ namespace Nancy.Metadata.OpenApi.Fluent
         {
             if (endpointInfo.ResponseInfos == null)
             {
-                endpointInfo.ResponseInfos = new Dictionary<string, Model.Response>();
+                endpointInfo.ResponseInfos = new Dictionary<string, global::Infocode.Nancy.Metadata.OpenApi.Model.Response>();
             }
 
             endpointInfo.ResponseInfos[statusCode] = GenerateResponseInfo(description);
@@ -195,11 +195,11 @@ namespace Nancy.Metadata.OpenApi.Fluent
         /// <param name="description"></param>
         /// <param name="responseType"></param>
         /// <returns></returns>
-        private static Model.Response GenerateResponseInfo(string description, Type responseType = null)
+        private static global::Infocode.Nancy.Metadata.OpenApi.Model.Response GenerateResponseInfo(string description, Type responseType = null)
         {
             if (responseType is Type)
             { 
-                return new Model.Response
+                return new global::Infocode.Nancy.Metadata.OpenApi.Model.Response
                 {
                     Schema = new SchemaRef
                     {
@@ -210,7 +210,7 @@ namespace Nancy.Metadata.OpenApi.Fluent
             }
             else
             {
-                return new Model.Response { Description = description };
+                return new global::Infocode.Nancy.Metadata.OpenApi.Model.Response { Description = description };
             }
         }
 

@@ -1,7 +1,7 @@
-﻿using Nancy.Metadata.OpenApi.Model;
+﻿using Infocode.Nancy.Metadata.OpenApi.Model;
 using Nancy.Routing;
 
-namespace Nancy.Metadata.OpenApi.Core
+namespace Infocode.Nancy.Metadata.OpenApi.Core
 {
     public class OpenApiRouteMetadata
     {

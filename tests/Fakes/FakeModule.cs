@@ -1,8 +1,8 @@
-﻿using Nancy.Metadata.OpenApi.Model;
-using Nancy.Metadata.OpenApi.Modules;
+﻿using Infocode.Nancy.Metadata.OpenApi.Model;
+using Infocode.Nancy.Metadata.OpenApi.Modules;
 using Nancy.Routing;
 
-namespace Nancy.Metadata.OpenApi.Tests.Fakes
+namespace Infocode.Nancy.Metadata.OpenApi.Tests.Fakes
 {
     public class FakeModule : OpenApiDocsModuleBase
     {

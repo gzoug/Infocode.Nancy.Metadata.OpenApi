@@ -1,9 +1,10 @@
-﻿using Nancy.Routing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Nancy;
+using Nancy.Routing;
 
-namespace Nancy.Metadata.OpenApi.Tests.Fakes
+namespace Infocode.Nancy.Metadata.OpenApi.Tests.Fakes
 {
     public class FakeRouteCache : Dictionary<Type, List<Tuple<int, RouteDescription>>>, IRouteCache
     {
