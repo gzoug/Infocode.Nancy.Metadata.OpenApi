@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.6;net452</TargetFrameworks>
+    <Version>0.1.0-beta1</Version>
+    <PackageVersion>0.1.0-beta1</PackageVersion>
+    <PackageId>Infocode.Nancy2.Metadata.OpenApi</PackageId>
+    <Copyright>Copyright 2018</Copyright>
+    <Authors>George Zouganelis</Authors>
+    <AssemblyName>Infocode.Nancy.Metadata.OpenApi</AssemblyName>
+    <RootNamespace>Infocode.Nancy.Metadata.OpenApi</RootNamespace>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>Extended API on mapping request models</PackageReleaseNotes>
+    <PackageTags>openapi;nancy;metadata</PackageTags>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/gzoug/Infocode.Nancy.Metadata.OpenApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/gzoug/Infocode.Nancy.Metadata.OpenApi</RepositoryUrl>
+    <Company>Infocode</Company>
+    <Description>A library to add capabilities to a NancyFx web service to generate a json doc that complies to OpenApi spec 3.0.0.</Description>
+    <NeutralLanguage></NeutralLanguage>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>Infocode.Nancy2.Metadata.OpenApi</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="NJsonSchema" Version="9.13.35" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
+    <DefineConstants>NETSTANDARD1_6</DefineConstants>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <DefineConstants>NET45</DefineConstants>
+  </PropertyGroup>
+
+</Project>

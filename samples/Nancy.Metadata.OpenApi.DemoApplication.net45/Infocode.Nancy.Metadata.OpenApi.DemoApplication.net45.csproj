@@ -94,7 +94,7 @@
     <Content Include="Content\swagger-ui.js" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Infocode.Nancy.Metadata.OpenApi.csproj">
+    <ProjectReference Include="..\..\src\Infocode.Nancy.Metadata.OpenApi\Infocode.Nancy.Metadata.OpenApi.csproj">
       <Project>{5d00a219-9f98-498e-8a3f-f06449e3e864}</Project>
       <Name>Infocode.Nancy.Metadata.OpenApi</Name>
     </ProjectReference>

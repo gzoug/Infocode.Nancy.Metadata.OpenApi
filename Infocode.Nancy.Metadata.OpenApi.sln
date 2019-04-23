@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infocode.Nancy.Metadata.OpenApi", "src\Infocode.Nancy.Metadata.OpenApi.csproj", "{5D00A219-9F98-498E-8A3F-F06449E3E864}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infocode.Nancy.Metadata.OpenApi", "src\Infocode.Nancy.Metadata.OpenApi\Infocode.Nancy.Metadata.OpenApi.csproj", "{5D00A219-9F98-498E-8A3F-F06449E3E864}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infocode.Nancy.Metadata.OpenApi.DemoApplication", "samples\Nancy.Metadata.OpenApi.DemoApplication\Infocode.Nancy.Metadata.OpenApi.DemoApplication.csproj", "{2F0A9588-2611-421B-AECE-9C1EE0CC4885}"
 EndProject
@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{F263
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infocode.Nancy.Metadata.OpenApi.DemoApplication.net45", "samples\Nancy.Metadata.OpenApi.DemoApplication.net45\Infocode.Nancy.Metadata.OpenApi.DemoApplication.net45.csproj", "{A537003B-2A76-4A0D-8F08-7D66EC17E2F8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infocode.Nancy2.Metadata.OpenApi", "src\Infocode.Nancy2.Metadata.OpenApi\Infocode.Nancy2.Metadata.OpenApi.csproj", "{C747D6B5-5544-4028-902A-7897FF0507A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{A537003B-2A76-4A0D-8F08-7D66EC17E2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A537003B-2A76-4A0D-8F08-7D66EC17E2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A537003B-2A76-4A0D-8F08-7D66EC17E2F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C747D6B5-5544-4028-902A-7897FF0507A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C747D6B5-5544-4028-902A-7897FF0507A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C747D6B5-5544-4028-902A-7897FF0507A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C747D6B5-5544-4028-902A-7897FF0507A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{97BBDED1-2E8D-44FE-BE27-9D42ED8E2E6C} = {178C30E6-3F69-41B0-A1B9-B3D43F67871F}
 		{2208CC8E-3A44-4B16-BD1A-9C0D2A30F213} = {683860E0-2FE8-495B-9382-DEE218444210}
 		{A537003B-2A76-4A0D-8F08-7D66EC17E2F8} = {F263DB03-E191-4663-B0A0-A3436A58B483}
+		{C747D6B5-5544-4028-902A-7897FF0507A5} = {70236A43-926D-4051-93CD-384D59932752}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F45BFF81-AF91-404F-A965-03B41882CAF0}

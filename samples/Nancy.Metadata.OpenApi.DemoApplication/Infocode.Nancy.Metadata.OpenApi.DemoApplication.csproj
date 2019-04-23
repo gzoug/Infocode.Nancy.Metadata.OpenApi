@@ -35,7 +35,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Infocode.Nancy.Metadata.OpenApi.csproj" />
+    <ProjectReference Include="..\..\src\Infocode.Nancy.Metadata.OpenApi\Infocode.Nancy.Metadata.OpenApi.csproj" />
   </ItemGroup>
 
 </Project>
