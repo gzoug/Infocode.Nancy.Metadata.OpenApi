@@ -59,7 +59,7 @@ namespace Infocode.Nancy.Metadata.OpenApi.Core
             if (!Cache.ContainsKey(typeName))
             {
                 var generator = new JsonSchemaGenerator(_settings);
-                var schema = generator.GenerateAsync(type).Result;
+                var schema = generator.Generate(type);
                 if (schema != null)
                 {
                     AddToCache(typeName, JObject.Parse(schema.ToJson()));

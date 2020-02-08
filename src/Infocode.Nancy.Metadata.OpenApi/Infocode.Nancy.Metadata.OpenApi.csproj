@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.6;net45</TargetFrameworks>
-    <Version>0.1.0-beta1</Version>
-    <PackageVersion>0.1.0-beta1</PackageVersion>
+    <TargetFrameworks>net45</TargetFrameworks>
+    <Version>0.1.0-beta2</Version>
+    <PackageVersion>0.1.0-beta2</PackageVersion>
     <PackageId>Infocode.Nancy.Metadata.OpenApi</PackageId>
-    <Copyright>Copyright 2018</Copyright>
+    <Copyright>Copyright 2020</Copyright>
     <Authors>George Zouganelis</Authors>
     <AssemblyName>Infocode.Nancy.Metadata.OpenApi</AssemblyName>
     <RootNamespace>Infocode.Nancy.Metadata.OpenApi</RootNamespace>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>Extended API on mapping request models</PackageReleaseNotes>
     <PackageTags>openapi;nancy;metadata</PackageTags>
-    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/gzoug/Infocode.Nancy.Metadata.OpenApi</PackageProjectUrl>
     <RepositoryUrl>https://github.com/gzoug/Infocode.Nancy.Metadata.OpenApi</RepositoryUrl>
     <Company>Infocode</Company>
@@ -22,24 +22,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
-    <PackageReference Include="NJsonSchema" Version="9.10.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="NJsonSchema" Version="10.1.5" />
   </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6' ">
-    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
-  </ItemGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
-    <DefineConstants>NETSTANDARD1_6</DefineConstants>
-  </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net45' ">
-    <PackageReference Include="Nancy" Version="1.4.4" />
+    <PackageReference Include="Nancy" Version="1.4.5" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <DefineConstants>NET45</DefineConstants>
   </PropertyGroup>
-
 </Project>
