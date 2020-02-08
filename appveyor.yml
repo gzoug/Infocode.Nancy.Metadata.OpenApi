@@ -1,5 +1,5 @@
-﻿version: '0.1.0-beta1-.{build}'
-image: Visual Studio 2017
+﻿version: '0.1.0-beta2-.{build}'
+image: Visual Studio 2019
 branches:
   only:
   - master
@@ -12,9 +12,9 @@ before_build:
   - cmd: dotnet --version
 build_script:
   - cmd: dotnet build ./src/Infocode.Nancy.Metadata.OpenApi/Infocode.Nancy.Metadata.OpenApi.csproj -v quiet
-  - cmd: dotnet publish ./src/Infocode.Nancy.Metadata.OpenApi/Infocode.Nancy.Metadata.OpenApi.csproj -v quiet -f=netstandard1.6
+  - cmd: dotnet publish ./src/Infocode.Nancy.Metadata.OpenApi/Infocode.Nancy.Metadata.OpenApi.csproj -v quiet -f=net45
   - cmd: dotnet build ./src/Infocode.Nancy2.Metadata.OpenApi/Infocode.Nancy2.Metadata.OpenApi.csproj -v quiet
-  - cmd: dotnet publish ./src/Infocode.Nancy2.Metadata.OpenApi/Infocode.Nancy2.Metadata.OpenApi.csproj -v quiet -f=netstandard1.6
+  - cmd: dotnet publish ./src/Infocode.Nancy2.Metadata.OpenApi/Infocode.Nancy2.Metadata.OpenApi.csproj -v quiet -f=netstandard2.0 -f=net452
 test_script:
   - cmd: dotnet test ./tests/Infocode.Nancy.Metadata.OpenApi.Tests.csproj 
 artifacts:
@@ -22,11 +22,11 @@ artifacts:
 skip_commits:
   files:
     - '**/*.md'
-deploy:
-- provider: NuGet
-  server: https://www.myget.org/F/infocode-nancy-metadata-openapi/api/v2/package
-  on:
-    branch: master  
-  api_key:
+#deploy:
+#- provider: NuGet
+#  server: https://www.myget.org/F/infocode-nancy-metadata-openapi/api/v2/package
+#  on:
+#    branch: master  
+#  api_key:
 #    secure: 
-  skip_symbols: true
+#  skip_symbols: true
