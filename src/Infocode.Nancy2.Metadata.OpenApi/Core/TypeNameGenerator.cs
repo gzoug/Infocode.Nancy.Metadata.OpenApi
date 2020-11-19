@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NJsonSchema;
+using NJsonSchema.Generation;
 
 namespace Infocode.Nancy.Metadata.OpenApi.Core
 {
@@ -20,6 +21,6 @@ namespace Infocode.Nancy.Metadata.OpenApi.Core
         /// <param name="typeNameHint"></param>
         /// <param name="reservedTypeNames"></param>
         /// <returns></returns>
-        public string Generate(JsonSchema4 schema, string typeNameHint, IEnumerable<string> reservedTypeNames) => typeNameHint;
+        public string Generate(JsonSchema schema, string typeNameHint, IEnumerable<string> reservedTypeNames) => typeNameHint;
     }
 }

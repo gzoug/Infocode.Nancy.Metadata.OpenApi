@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.6;net452</TargetFrameworks>
-    <Version>0.1.0-beta1</Version>
-    <PackageVersion>0.1.0-beta1</PackageVersion>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    <Version>0.2.0-beta1</Version>
+    <PackageVersion>0.2.0-beta1</PackageVersion>
     <PackageId>Infocode.Nancy2.Metadata.OpenApi</PackageId>
-    <Copyright>Copyright 2018</Copyright>
+    <Copyright>Copyright 2020</Copyright>
     <Authors>George Zouganelis</Authors>
     <AssemblyName>Infocode.Nancy.Metadata.OpenApi</AssemblyName>
     <RootNamespace>Infocode.Nancy.Metadata.OpenApi</RootNamespace>
@@ -23,9 +23,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="NJsonSchema" Version="9.13.35" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2"  />
+    <PackageReference Include="NJsonSchema" Version="10.3" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
